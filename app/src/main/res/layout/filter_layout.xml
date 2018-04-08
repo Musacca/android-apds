@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/sensor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/excellentConditionColor"
+            android:textSize="21sp"
+            />
+        <ImageView
+
+            android:src="@drawable/ic_list_popup"
+            android:id="@+id/calendar_icon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"/>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#8b8b8b"
+            />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/filter_list"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </ListView>
+</RelativeLayout>

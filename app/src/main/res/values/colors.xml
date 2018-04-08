@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#88ac6a</color>
+    <color name="colorPrimaryDark">#88ac6a</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="greenColor">#a2d777</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="widgetIconColor">#08C2FF</color>
+    <color name="widgetTextColor">#BBEFFF</color>
+    <color name="widgetBackgroundColor">#1D3042</color>
+    <color name="widgetRedcolor">#F21632</color>
+    <color name="widgetLightBlueColor">#03FFFF</color>
+    <color name="widgetGreenColor">#008100</color>
+
+    <color name="borderOvalViewColor">#9288c7</color>
+    <color name="wordColors">#c5cae9</color>
+
+
+    <color name="logoutTextButtonColor">#ecf7eb</color>
+    <color name="widgetConfirmButtonColor">#ecf7eb</color>
+    <color name="logoutYesButtonColor">#C5CAE9</color>
+    <color name="deviderColor">#e1e0e0</color>
+    <color name="sensorNameColor">#444546</color>
+    <color name="sensorTypeColor">#959697</color>
+    <color name="excellentConditionColor">#b3dc92</color>
+    <color name="backgroundColor">#b3dc92</color>
+    <color name="badConditionColor">#bf6e3f</color>
+    <color name="poorConditionColor">#beb81c</color>
+    <color name="yellowColor">#fcf15d</color>
+    <color name="skip_button_color">#c0c933</color>
+
+
+
+    <color name="signInColor">#FFFFFF</color>
+
+
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lyt"
+    android:paddingTop="7dp"
+    android:layout_width="match_parent"
+    android:paddingBottom="7dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/sensor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="O2"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        />
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/sensor_switch"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        app:buttonTint="@color/white"/>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/first_screen"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        />
+
+    <item
+        android:id="@+id/calendar_screen"
+        android:icon="@drawable/ic_calendar_black"
+        android:title="Calendar" />
+
+    <item
+        android:id="@+id/filter_screen"
+        android:icon="@drawable/ic_list_black"
+        android:title="Filter" />
+    <item
+        android:id="@+id/setting_screen"
+
+        android:icon="@drawable/ic_setting_black"
+        android:title="Setting" />
+
+</menu>

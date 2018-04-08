@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/widget_margin"
+    android:weightSum="3"
+    android:background="@color/widgetBackgroundColor">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/ic_temperature"
+        android:tint="@color/widgetIconColor"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/widgetTextColor"
+            android:text="Temperature"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/widgetRedcolor"
+            android:text="15° C"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/ic_humidity"
+            android:tint="@color/widgetIconColor"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/widgetTextColor"
+            android:text="Humidity"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/widgetLightBlueColor"
+            android:text="18%"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:tint="@color/widgetIconColor"
+            app:srcCompat="@drawable/ic_pressure" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:text="Pressure"
+            android:textColor="@color/widgetTextColor"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/pressure_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="3.31"
+                android:textColor="@color/widgetGreenColor"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/pressure_degree"
+                android:layout_toRightOf="@id/pressure_degree"
+                android:text="mPa"
+                android:textColor="@color/widgetGreenColor"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

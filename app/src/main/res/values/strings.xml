@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">APDS</string>
+    <string name="temperature">Temperature</string>
+    <string name="fahrenheit">fahrenheit</string>
+    <string name="humidity">Humidity</string>
+    <string name="ppm">PPM</string>
+    <string name="carbon_dioxide">Carbon Dioxide</string>
+    <string name="air_pressure">Air Pressure</string>
+    <string name="hpa">hPa</string>
+    <string name="carbon_monoxide">Carbon Monoxide</string>
+    <string name="ppb">PPB</string>
+    <string name="ozone">Ozone</string>
+    <string name="the_air_in_the_home_is_top_shape_breathe_freely_and_enjoy_every_breath_you_are_safe">The air in the home is top shape. Breathe freely and enjoy every breath. You are safe.</string>
+    <string name="you_will_recieve_verification_code_few_seconds">You will recieve verification code in few seconds</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+</resources>
