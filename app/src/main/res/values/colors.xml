@@ -30,6 +30,7 @@
     <color name="yellowColor">#fcf15d</color>
     <color name="skip_button_color">#c0c933</color>
 
+    <color name="toastBackgroundColor">#1f2141</color>
 
 
     <color name="signInColor">#FFFFFF</color>

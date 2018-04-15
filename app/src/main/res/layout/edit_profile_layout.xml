@@ -120,7 +120,7 @@
 
 
 
-        <TextView
+        <EditText
 
             android:id="@+id/number2"
             android:layout_width="fill_parent"
@@ -164,7 +164,7 @@
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:background="@color/colorPrimary" />
-        <EditText
+        <TextView
             android:id="@+id/location"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

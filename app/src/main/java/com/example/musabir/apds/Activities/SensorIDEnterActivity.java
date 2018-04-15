@@ -1,18 +1,38 @@
 package com.example.musabir.apds.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.musabir.apds.Defaults.APIResponseCodes;
+import com.example.musabir.apds.Defaults.URLHeaders;
+import com.example.musabir.apds.Helper.Helper;
 import com.example.musabir.apds.R;
 
-public class SensorIDEnterActivity extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
+public class SensorIDEnterActivity extends AppCompatActivity {
+    EditText sensor_id ;
+    TextView here;
+    Button enter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,29 +40,92 @@ public class SensorIDEnterActivity extends AppCompatActivity {
 
         setContentView(R.layout.insert_sensor_id);
 
-
-        TextView textView = findViewById(R.id.here);
-        Button enter = findViewById(R.id.enter);
-        Button barcode_reader = findViewById(R.id.barcode_reader);
-        textView.setOnClickListener(new View.OnClickListener() {
+        sensor_id = findViewById(R.id.sensor_id);
+        here = findViewById(R.id.here);
+        enter = findViewById(R.id.enter);
+        here.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(SensorIDEnterActivity.this,LoginActivity.class);
+                Intent intent=new Intent(SensorIDEnterActivity.this,EnterMsisdnActivity.class);
+                intent.putExtra("status",0);//login
                 startActivity(intent);
             }
         });
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(SensorIDEnterActivity.this,RegisterationActivity.class);
-                startActivity(intent);
+                if(sensor_id.getText()!=null)
+               checkSensorID(sensor_id.getText().toString().trim());
+                else Helper.showCustomAlert(SensorIDEnterActivity.this,getString(R.string.please_enter_a_sensor_id));
             }
         });
-        barcode_reader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SensorIDEnterActivity.this,"Not available yet...",Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
+
+    private void checkSensorID(final String id) {
+        final ProgressDialog pDialog = new ProgressDialog(SensorIDEnterActivity.this);
+        pDialog.getWindow().setBackgroundDrawable(new
+                ColorDrawable(android.graphics.Color.TRANSPARENT));
+        pDialog.setIndeterminate(true);
+        pDialog.setCancelable(true);
+        pDialog.show();
+        pDialog.setContentView(R.layout.custom_progress_dialog);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest postRequest = new StringRequest(Request.Method.POST, URLHeaders.URL_CHECK_SENSOR_BY_ID,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+
+                        pDialog.dismiss();
+                        String appData = null;
+                        int code = 0;
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            boolean obj1 = obj.getBoolean("success");
+                            if(obj1) {
+                                if ((obj.getJSONObject("payload").getBoolean("sensorExist"))) {
+                                    Intent intent = new Intent(SensorIDEnterActivity.this, EnterMsisdnActivity.class);
+                                    intent.putExtra("status", 1);//register
+                                    intent.putExtra("sensorId", sensor_id.getText().toString().trim());
+                                    startActivity(intent);
+                                } else
+                                    Helper.showCustomAlert(SensorIDEnterActivity.this, getString(R.string.wrong_sensor_id));
+
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // error
+                //  Toast.makeText(SplashScreenActivity.this, "Error occurs", Toast.LENGTH_SHORT).show();
+                Log.d("Error.Response", error.getMessage() + " message");
+                if (pDialog != null)
+                    pDialog.dismiss();
+
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                HashMap<String, String> param = new HashMap<>();
+                param.put("sensorId",id);
+
+                return param;
+            }
+        };
+        queue.add(postRequest);
+
+
+    }
+
 }

@@ -17,7 +17,10 @@ import android.widget.ListView;
 
 import com.example.musabir.apds.Adapter.FilterListAdapter;
 import com.example.musabir.apds.Dialog.FilterPopupDialog;
+import com.example.musabir.apds.Mapper.FilterMapper;
 import com.example.musabir.apds.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Musabir on 3/2/2018.
@@ -33,7 +36,7 @@ public class FilterFragment extends PreferenceFragment {
 
         ListView listView = view.findViewById(R.id.filter_list);
         ImageView calendar_icon = view.findViewById(R.id.calendar_icon);
-        FilterListAdapter filterListAdapter = new FilterListAdapter(getActivity());
+        FilterListAdapter filterListAdapter = new FilterListAdapter(getActivity(),new ArrayList<FilterMapper>());
         listView.setAdapter(filterListAdapter);
         calendar_icon.setOnClickListener(new View.OnClickListener() {
             @Override

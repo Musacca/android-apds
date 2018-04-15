@@ -1,4 +1,4 @@
-package com.example.musabir.apds;
+package com.example.musabir.apds.Activities;
 
 import android.app.Dialog;
 import android.app.Fragment;
@@ -13,12 +13,12 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.example.musabir.apds.Dialog.FilterPopupDialog;
 import com.example.musabir.apds.Dialog.FirstPagePopupDialog;
 import com.example.musabir.apds.Fragments.CalendarViewFragment;
 import com.example.musabir.apds.Fragments.FilterFragment;
 import com.example.musabir.apds.Fragments.FirstScreenFragment;
 import com.example.musabir.apds.Fragments.SettingFragment;
+import com.example.musabir.apds.R;
 
 public class Main2Activity extends AppCompatActivity {
 

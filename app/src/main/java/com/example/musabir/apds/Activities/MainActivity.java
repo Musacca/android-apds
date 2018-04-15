@@ -1,4 +1,4 @@
-package com.example.musabir.apds;
+package com.example.musabir.apds.Activities;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.musabir.apds.AxisValueFormatter;
+import com.example.musabir.apds.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;

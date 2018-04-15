@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
      android:layout_width="match_parent"
     android:layout_marginBottom="20dp"
     >
@@ -193,7 +194,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_temperature" />
+                app:srcCompat="@drawable/ic_temperature" />
         </RelativeLayout>
 
         <View
@@ -320,7 +321,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_humidity" />
+                app:srcCompat="@drawable/ic_humidity" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -453,7 +454,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_carbon" />
+                app:srcCompat="@drawable/ic_carbon" />
         </RelativeLayout>
 
         <View
@@ -475,14 +476,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="20dp"
-                android:layout_toRightOf="@+id/air_pressure_icon">
+                android:layout_toRightOf="@+id/hydrogen_icon">
 
                 <TextView
                     android:id="@+id/air_pressure_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="1dp"
-                    android:text="@string/air_pressure"
+                    android:text="@string/hydrogen"
                     android:textAllCaps="true"
                     android:textColor="@color/sensorNameColor"
                     android:textSize="17sp" />
@@ -506,7 +507,7 @@
 
                     <TextView
                         android:paddingTop="5dp"
-                        android:id="@+id/air_pres_min_txt"
+                        android:id="@+id/hydrogen_min_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Min: "
@@ -516,54 +517,54 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/air_pres_min_txt"
-                        android:id="@+id/air_pres_min_degree"
+                        android:layout_alignBottom="@id/hydrogen_min_txt"
+                        android:id="@+id/hydrogen_min_degree"
                         android:textColor="@color/excellentConditionColor"
                         android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
-                        android:layout_toRightOf="@id/air_pres_min_txt"/>
+                        android:layout_toRightOf="@id/hydrogen_min_txt"/>
                     <TextView
                         android:paddingTop="5dp"
-                        android:id="@+id/air_pres_avg_txt"
+                        android:id="@+id/hydrogen_avg_txt"
                         android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Avg: "
                         android:textColor="@color/poorConditionColor"
                         android:textSize="15sp"
-                        android:layout_below="@+id/air_pres_min_txt"
+                        android:layout_below="@+id/hydrogen_min_txt"
                         />
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/air_pres_avg_txt"
-                        android:id="@+id/air_pres_avg_degree"
+                        android:layout_alignBottom="@id/hydrogen_avg_txt"
+                        android:id="@+id/hydrogen_avg_degree"
                         android:textColor="@color/poorConditionColor"
                         android:text="16"
                         android:textSize="14sp"
-                        android:layout_toRightOf="@id/air_pres_avg_txt"/>
+                        android:layout_toRightOf="@id/hydrogen_avg_txt"/>
 
                     <TextView
                         android:paddingTop="5dp"
-                        android:id="@+id/air_pres_max_txt"
+                        android:id="@+id/hydrogen_max_txt"
                         android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Max: "
                         android:textColor="@color/badConditionColor"
                         android:textSize="15sp"
-                        android:layout_below="@+id/air_pres_avg_txt"/>
+                        android:layout_below="@+id/hydrogen_avg_txt"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/air_pres_max_txt"
-                        android:id="@+id/air_pres_max_degree"
+                        android:layout_alignBottom="@id/hydrogen_max_txt"
+                        android:id="@+id/hydrogen_max_degree"
                         android:textColor="@color/badConditionColor"
                         android:text="20"
                         android:textSize="14sp"
-                        android:layout_toRightOf="@id/air_pres_max_txt"/>
+                        android:layout_toRightOf="@id/hydrogen_max_txt"/>
 
                 </RelativeLayout>
 
@@ -571,13 +572,13 @@
             </RelativeLayout>
 
             <ImageView
-                android:id="@+id/air_pressure_icon"
+                android:id="@+id/hydrogen_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_pressure" />
+                app:srcCompat="@drawable/ic_pressure" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -710,7 +711,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_carbon_monoxide" />
+                app:srcCompat="@drawable/ic_carbon_monoxide" />
         </RelativeLayout>
 
         <View
@@ -732,23 +733,23 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="20dp"
-                android:layout_toRightOf="@+id/ozone_icon">
+                android:layout_toRightOf="@+id/smoke_icon">
 
                 <TextView
-                    android:id="@+id/ozone_txt"
+                    android:id="@+id/smoke_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="1dp"
-                    android:text="@string/ozone"
+                    android:text="@string/smoke"
                     android:textAllCaps="true"
                     android:textColor="@color/sensorNameColor"
                     android:textSize="17sp" />
 
                 <TextView
-                    android:id="@+id/ppb_txt"
+                    android:id="@+id/smoke_value_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ozone_txt"
+                    android:layout_below="@+id/smoke_txt"
                     android:layout_marginLeft="1dp"
                     android:text="@string/ppb"
                     android:textColor="@color/sensorTypeColor"
@@ -757,14 +758,14 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ppb_txt"
+                    android:layout_below="@+id/smoke_value_txt"
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="3dp"
                     >
 
                     <TextView
                         android:paddingTop="5dp"
-                        android:id="@+id/ozone_min_txt"
+                        android:id="@+id/smoke_min_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Min: "
@@ -774,54 +775,54 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/ozone_min_txt"
-                        android:id="@+id/ozone_min_degree"
+                        android:layout_alignBottom="@id/smoke_min_txt"
+                        android:id="@+id/smoke_min_degree"
                         android:textColor="@color/excellentConditionColor"
                         android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
-                        android:layout_toRightOf="@id/ozone_min_txt"/>
+                        android:layout_toRightOf="@id/smoke_min_txt"/>
                     <TextView
                         android:paddingTop="5dp"
-                        android:id="@+id/ozone_avg_txt"
+                        android:id="@+id/smoke_avg_txt"
                         android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Avg: "
                         android:textColor="@color/poorConditionColor"
                         android:textSize="15sp"
-                        android:layout_below="@+id/ozone_min_txt"
+                        android:layout_below="@+id/smoke_min_txt"
                         />
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/ozone_avg_txt"
-                        android:id="@+id/ozone_avg_degree"
+                        android:layout_alignBottom="@id/smoke_avg_txt"
+                        android:id="@+id/smoke_avg_degree"
                         android:textColor="@color/poorConditionColor"
                         android:text="16"
                         android:textSize="14sp"
-                        android:layout_toRightOf="@id/ozone_avg_txt"/>
+                        android:layout_toRightOf="@id/smoke_avg_txt"/>
 
                     <TextView
                         android:paddingTop="5dp"
-                        android:id="@+id/ozone_max_txt"
+                        android:id="@+id/smoke_max_txt"
                         android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Max: "
                         android:textColor="@color/badConditionColor"
                         android:textSize="15sp"
-                        android:layout_below="@+id/ozone_avg_txt"/>
+                        android:layout_below="@+id/smoke_avg_txt"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/ozone_max_txt"
-                        android:id="@+id/ozone_max_degree"
+                        android:layout_alignBottom="@id/smoke_max_txt"
+                        android:id="@+id/smoke_max_degree"
                         android:textColor="@color/badConditionColor"
                         android:text="20"
                         android:textSize="14sp"
-                        android:layout_toRightOf="@id/ozone_max_txt"/>
+                        android:layout_toRightOf="@id/smoke_max_txt"/>
 
                 </RelativeLayout>
 
@@ -829,13 +830,273 @@
             </RelativeLayout>
 
             <ImageView
-                android:id="@+id/ozone_icon"
+                android:id="@+id/smoke_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_ozone" />
+                app:srcCompat="@drawable/ic_ozone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/horizontal3"
+        android:layout_width="match_parent"
+        android:layout_height="1.2dp"
+        android:layout_below="@+id/third_lyt"
+        android:background="@color/deviderColor" />
+
+
+    <RelativeLayout
+        android:id="@+id/fourth_lyt_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/horizontal3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@+id/view4">
+
+            <RelativeLayout
+                android:id="@+id/rl7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/methane_icon">
+
+                <TextView
+                    android:id="@+id/methane_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:text="@string/methane"
+
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/sensorNameColor"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/methane_value_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/methane_txt"
+                    android:layout_marginLeft="1dp"
+                    android:text="@string/ppm"
+                    android:textColor="@color/sensorTypeColor"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/methane_value_txt"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="3dp"
+                    >
+
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:id="@+id/methane_min_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Min: "
+                        android:textColor="@color/excellentConditionColor"
+                        android:textSize="15sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/methane_min_txt"
+                        android:id="@+id/methane_min_degree"
+                        android:textColor="@color/excellentConditionColor"
+                        android:text="12"
+                        android:textSize="14sp"
+                        android:paddingRight="10dp"
+                        android:layout_toRightOf="@id/methane_min_txt"/>
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:id="@+id/methane_avg_txt"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avg: "
+                        android:textColor="@color/poorConditionColor"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/methane_min_txt"
+                        />
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/methane_avg_txt"
+                        android:id="@+id/methane_avg_degree"
+                        android:textColor="@color/poorConditionColor"
+                        android:text="16"
+                        android:textSize="14sp"
+                        android:layout_toRightOf="@id/methane_avg_txt"/>
+
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:id="@+id/methane_max_txt"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Max: "
+                        android:textColor="@color/badConditionColor"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/methane_avg_txt"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/methane_max_txt"
+                        android:id="@+id/methane_max_degree"
+                        android:textColor="@color/badConditionColor"
+                        android:text="20"
+                        android:textSize="14sp"
+                        android:layout_toRightOf="@id/methane_max_txt"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/methane_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/ic_carbon_monoxide" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="1.2dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@color/deviderColor" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/view4">
+
+            <RelativeLayout
+                android:id="@+id/rl8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/lpg_icon">
+
+                <TextView
+                    android:id="@+id/lpg_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:text="@string/lpg"
+                    android:textAllCaps="true"
+                    android:textColor="@color/sensorNameColor"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/lpg_value_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lpg_txt"
+                    android:layout_marginLeft="1dp"
+                    android:text="@string/ppb"
+                    android:textColor="@color/sensorTypeColor"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lpg_value_txt"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="3dp"
+                    >
+
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:id="@+id/lpg_min_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Min: "
+                        android:textColor="@color/excellentConditionColor"
+                        android:textSize="15sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/lpg_min_txt"
+                        android:id="@+id/lpg_min_degree"
+                        android:textColor="@color/excellentConditionColor"
+                        android:text="12"
+                        android:textSize="14sp"
+                        android:paddingRight="10dp"
+                        android:layout_toRightOf="@id/lpg_min_txt"/>
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:id="@+id/lpg_avg_txt"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avg: "
+                        android:textColor="@color/poorConditionColor"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/lpg_min_txt"
+                        />
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/lpg_avg_txt"
+                        android:id="@+id/lpg_avg_degree"
+                        android:textColor="@color/poorConditionColor"
+                        android:text="16"
+                        android:textSize="14sp"
+                        android:layout_toRightOf="@id/lpg_avg_txt"/>
+
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:id="@+id/lpg_max_txt"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Max: "
+                        android:textColor="@color/badConditionColor"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/lpg_avg_txt"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/lpg_max_txt"
+                        android:id="@+id/lpg_max_degree"
+                        android:textColor="@color/badConditionColor"
+                        android:text="20"
+                        android:textSize="14sp"
+                        android:layout_toRightOf="@id/lpg_max_txt"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/lpg_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/ic_ozone" />
         </RelativeLayout>
     </RelativeLayout>
 

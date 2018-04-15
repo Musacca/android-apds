@@ -58,6 +58,7 @@ public class LineChartFragment extends PreferenceFragment {
         LineChart graph2 = (LineChart) view.findViewById(R.id.graph2);
 
         ArrayList<Entry> entries = new ArrayList<>();
+
         entries.add(new Entry(2f, 15));
         entries.add(new Entry(4f, 15));
         entries.add(new Entry(6f, 14));

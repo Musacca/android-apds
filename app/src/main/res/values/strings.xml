@@ -1,4 +1,6 @@
 <resources>
+    <string name="google_place_api">AIzaSyAzRAfojfGxTcV8D0ERZRx1CKDoaVzQn1A</string>
+
     <string name="app_name">APDS</string>
     <string name="temperature">Temperature</string>
     <string name="fahrenheit">fahrenheit</string>
@@ -19,5 +21,18 @@
     <string name="title_activity_edit_profile">EditProfile</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="wrong_sensor_id">Wrong sensor ID</string>
+    <string name="successfully_changed">Succesfully changed</string>
+    <string name="wrong_msisdn">Wrong phone number entered</string>
+
+    <string name="something_goes_wrong">Something goes wrong</string>
+    <string name="you_will_be_notified_when_measured_data_is_in_below_max_value_or_above_min_value">You will be notified when measured data is in below max value or above min value.</string>
+    <string name="you_will_revieve_a_call_or_sms_when_measured_data_is_in_below_max_value_or_above_min_value">You will receive a call or sms when measured data is in below max value or above min value.</string>
+    <string name="please_enter_a_sensor_id">Please, enter a sensor id</string>
+    <string name="lpg">LPG</string>
+    <string name="methane">Methane</string>
+    <string name="hydrogen">Hydrogen</string>
+    <string name="smoke">Smoke</string>
+    <string name="no_any_sensor_found">No any Sensor found</string>
 
 </resources>

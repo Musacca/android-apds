@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:background="@android:color/transparent"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/circle_lyt"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/half_circle"></RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_marginTop="-75dp"
+            android:layout_below="@+id/circle_lyt"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="115dp"
+            />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/language_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="You can change to another account."/>
+
+        <ImageView
+            android:id="@+id/language_icon"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/ic_account" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/txt"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/top_layout"
+        android:id="@+id/lyt"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:divider="@null"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_below="@+id/list"
+            android:id="@+id/lytt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:weightSum="2"
+            >
+
+
+            <RelativeLayout
+                android:id ="@+id/cancel"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:id ="@+id/confirm"
+
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Confirm"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:layout_alignTop="@+id/lytt"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/view1"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
