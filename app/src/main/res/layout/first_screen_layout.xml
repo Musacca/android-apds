@@ -34,7 +34,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_line_chart" />
+                android:src="@drawable/ic_line_chart" />
         </FrameLayout>
         <FrameLayout
             android:layout_marginTop="20dp"

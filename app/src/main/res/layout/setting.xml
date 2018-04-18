@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:layout_marginTop="3dp"
-            android:text="This is for setting minimum and maximum value for each sensor to recieve a call or SMS"
+            android:text="This is for setting minimum and maximum value for each sensor to recieve a call in an emergency situation"
             android:textColor="@color/sensorTypeColor"
             android:layout_below="@+id/call"/>
             </RelativeLayout>
@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:layout_marginTop="3dp"
-                    android:text="This is for setting minimum and maximum value for each sensor to recieve notifcation"
+                    android:text="This is for setting minimum and maximum value for each sensor to recieve an SMS in a suspicious condition"
                     android:textColor="@color/sensorTypeColor"
                     android:layout_below="@+id/notification"/>
             </RelativeLayout>
@@ -150,6 +150,7 @@
             android:layout_below="@+id/notification_rly"
             android:background="@color/deviderColor"/>
         <RelativeLayout
+            android:visibility="gone"
             android:layout_below="@+id/view3"
             android:id="@+id/widget_rly"
             android:paddingLeft="30dp"
@@ -180,6 +181,7 @@
             </RelativeLayout>
         </RelativeLayout>
         <View
+            android:visibility="gone"
             android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="1dp"

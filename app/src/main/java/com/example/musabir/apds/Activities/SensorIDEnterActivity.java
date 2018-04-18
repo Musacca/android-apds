@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -33,6 +34,7 @@ public class SensorIDEnterActivity extends AppCompatActivity {
     EditText sensor_id ;
     TextView here;
     Button enter;
+    RelativeLayout top_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class SensorIDEnterActivity extends AppCompatActivity {
         setContentView(R.layout.insert_sensor_id);
 
         sensor_id = findViewById(R.id.sensor_id);
+        top_layout = findViewById(R.id.top_layout);
         here = findViewById(R.id.here);
         enter = findViewById(R.id.enter);
         here.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +54,21 @@ public class SensorIDEnterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        if(getIntent().hasExtra("back"))
+            top_layout.setVisibility(View.VISIBLE);
+        else top_layout.setVisibility(View.GONE);
+        top_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(sensor_id.getText()!=null)
                checkSensorID(sensor_id.getText().toString().trim());
+
                 else Helper.showCustomAlert(SensorIDEnterActivity.this,getString(R.string.please_enter_a_sensor_id));
             }
         });

@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.musabir.apds.Defaults.APIResponseCodes;
+import com.example.musabir.apds.Defaults.Defaults;
 import com.example.musabir.apds.Defaults.URLHeaders;
 import com.example.musabir.apds.Helper.Helper;
 import com.example.musabir.apds.Mapper.UserModel;
@@ -29,6 +30,7 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,6 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -54,12 +57,14 @@ public class EditProfile extends AppCompatActivity {
     private String sLat,sLng;
     private String address;
     private UserModel userModel;
+    private Gson gson;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
         realm = Realm.getDefaultInstance();
+        gson = new Gson();
         setContentView(R.layout.edit_profile_layout);
         phone_number_txt = findViewById(R.id.phone_number_txt);
         name_txt = findViewById(R.id.name_txt);
@@ -90,11 +95,14 @@ public class EditProfile extends AppCompatActivity {
         token = userModel.getUuid();
         phone_number_txt.setText(userModel.getMsisdn());
         name.setText(userModel.getName());
+        Log.d("------><>>>>><><>",userModel.toString());
         name_txt.setText(userModel.getName());
         number2.setText(userModel.getPhoneNumber1());
         number3.setText(userModel.getPhoneNumber2());
         location.setText(userModel.getLocationName());
         address = userModel.getLocationName();
+        meCurrentSensor();
+
         List<String> ss = Arrays.asList(userModel.getLocation().split(","));
         if(ss!=null) {
             sLat = ss.get(0);
@@ -235,7 +243,8 @@ public class EditProfile extends AppCompatActivity {
                 param.put("phoneNumber2",number3.getText().toString().trim());
                 param.put("locationName",address);
                 param.put("location",sLat+","+sLng);
-                param.put("uuid",token);
+                param.put("uuid",Defaults.uuid);
+                param.put("sensorId", Defaults.sensorId);
 
                 return param;
             }
@@ -244,5 +253,100 @@ public class EditProfile extends AppCompatActivity {
 
 
     }
+    private void meCurrentSensor() {
 
+        final ProgressDialog pDialog = new ProgressDialog(EditProfile.this);
+        pDialog.getWindow().setBackgroundDrawable(new
+                ColorDrawable(android.graphics.Color.TRANSPARENT));
+        pDialog.setIndeterminate(true);
+        pDialog.setCancelable(true);
+        pDialog.show();
+        pDialog.setContentView(R.layout.custom_progress_dialog);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest postRequest = new StringRequest(Request.Method.POST, URLHeaders.URL_ME_CURRENT_SENSOR,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("sssssssss", response);
+
+                        pDialog.dismiss();
+                        String appData = null;
+                        boolean success = false;
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray objArray = null;
+                            success = obj.getBoolean("success");
+                            if(success) {
+                                JSONObject payload = obj.getJSONObject("payload");
+
+                                JSONObject obj1 = payload.getJSONObject("sensor");
+                                realm.beginTransaction();
+                                realm.commitTransaction();
+                                UserModel userModel = gson.fromJson(obj1.toString(), UserModel.class);
+//                                userModel.setUuid(uuid);
+//
+//                                if(userModel.getName()==null)
+//                                {
+//                                    Intent intent = new Intent(EditProfile.this, RegisterationActivity.class);
+//                                    intent.putExtra("uuid",uuid);
+//                                    intent.putExtra("msisdn",getIntent().getStringExtra("msisdn"));
+//                                    intent.putExtra("sensorId",getIntent().getStringExtra("sensorId"));
+//
+//                                    startActivity(intent);
+//                                }
+//                                else {
+//                                    RealmResults<UserModel> realmResults = realm.where(UserModel.class).findAll();
+//                                    if(realmResults!=null)
+//                                        for(int i=0;i<realmResults.size();i++)
+//                                        {
+//                                            realmResults.get(i).setActive(false);
+//                                            realm.copyToRealmOrUpdate(realmResults.get(i));
+//                                        }
+//                                    userModel.setActive(true);
+//                                    Intent intent = new Intent(EditProfile.this, Main2Activity.class);
+//                                    Defaults.msisdn = userModel.getMsisdn();
+//                                    Defaults.sensorId = userModel.getSensorId();
+//                                    Defaults.uuid = userModel.getUuid();
+//                                    startActivity(intent);
+//                                }
+//                                realm.copyToRealmOrUpdate(userModel);
+//                                realm.commitTransaction();
+//
+//                            }
+//                            else {
+//                                JSONObject obj1 = obj.getJSONObject("error");
+//                                Helper.showCustomAlert(EditProfile.this,getString(R.string.something_goes_wrong));
+//                            }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // error
+                //  Toast.makeText(SplashScreenActivity.this, "Error occurs", Toast.LENGTH_SHORT).show();
+                Log.d("Error.Response", error.getMessage() + " message");
+                if (pDialog != null)
+                    pDialog.dismiss();
+
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                HashMap<String, String> param = new HashMap<>();
+                param.put("uuid",Defaults.uuid);
+                param.put("sensorId",Defaults.sensorId);
+                return param;
+            }
+        };
+        queue.add(postRequest);
+
+
+    }
 }

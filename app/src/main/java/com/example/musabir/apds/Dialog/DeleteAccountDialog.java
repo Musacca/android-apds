@@ -100,41 +100,25 @@ public class DeleteAccountDialog extends Dialog {
                                             .equalTo("sensorId",Defaults.sensorId).findFirst();
                                     userModels.deleteFromRealm();
 
-                                    RealmResults<UserModel> s  = realm.where(UserModel.class).findAll();
-                                    if(s==null) {
+                                    Log.d("-------><>>>><>",realm.where(UserModel.class).findAll().size()+" size");
+                                    UserModel s = realm.where(UserModel.class).findFirst();
+                                    if (s == null) {
                                         Intent intent = new Intent(getContext(), SensorIDEnterActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        Defaults.uuid=null;
+                                        Defaults.uuid = null;
                                         Defaults.sensorId = null;
                                         Defaults.msisdn = null;
                                         getContext().startActivity(intent);
-                                    }
-                                    else {
-                                        for(int i=0;i<s.size();i++){
-                                            if(s.get(i).getName()!=null){
-                                                s.get(i).setActive(true);
-                                                Defaults.uuid=s.get(i).getUuid();
-                                                Defaults.sensorId = s.get(i).getSensorId();
-                                                Defaults.msisdn = s.get(i).getMsisdn();
-                                                Intent intent = new Intent(getContext(), Main2Activity.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                getContext().startActivity(intent);
-                                                realm.copyToRealmOrUpdate(s.get(i));
-                                                break;
-                                            }
-                                            else if (i==s.size()-1){
-                                                Intent intent = new Intent(getContext(), RegisterationActivity.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                intent.putExtra("uuid",s.get(i).getUuid());
-                                                intent.putExtra("msisdn",s.get(i).getMsisdn());
-                                                intent.putExtra("sensorId",s.get(i).getSensorId());
-                                                intent.putExtra("coming",1);
-                                                Defaults.uuid=null;
-                                                Defaults.sensorId = null;
-                                                Defaults.msisdn = null;
-                                                getContext().startActivity(intent);
-                                            }
-                                        }
+                                    } else {
+
+                                        s.setActive(true);
+                                        Defaults.uuid = s.getUuid();
+                                        Defaults.sensorId = s.getSensorId();
+                                        Defaults.msisdn = s.getMsisdn();
+                                        Intent intent = new Intent(getContext(), Main2Activity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        getContext().startActivity(intent);
+                                        realm.copyToRealmOrUpdate(s);
                                     }
                                     realm.commitTransaction();
 
@@ -166,7 +150,7 @@ public class DeleteAccountDialog extends Dialog {
             protected Map<String, String> getParams() {
                 HashMap<String, String> param = new HashMap<>();
                 param.put("uuid", Defaults.uuid);
-                param.put("msisdn", Defaults.msisdn);
+                param.put("sensorId", Defaults.sensorId);
                 param.put("status", -5+"");
 
                 return param;

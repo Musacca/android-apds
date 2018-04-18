@@ -1,14 +1,18 @@
 package com.example.musabir.apds.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.musabir.apds.Mapper.FilterMapper;
 import com.example.musabir.apds.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -26,12 +30,12 @@ public class FilterListAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return 10;
+        return filterMappers.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return filterMappers.get(i);
     }
 
     @Override
@@ -52,6 +56,13 @@ public class FilterListAdapter extends BaseAdapter {
             contactsView = (LinearLayout) view;
 
         }
+        TextView date = contactsView.findViewById(R.id.day);
+        TextView time = contactsView.findViewById(R.id.clock);
+        TextView value = contactsView.findViewById(R.id.degree);
+
+        date.setText(filterMappers.get(i).getDate());
+        time.setText(filterMappers.get(i).getTime());
+        value.setText(filterMappers.get(i).getValue()+"");
         return contactsView;
     }
 }

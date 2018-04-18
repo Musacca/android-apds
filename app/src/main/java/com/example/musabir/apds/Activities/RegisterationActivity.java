@@ -78,13 +78,7 @@ public class RegisterationActivity extends AppCompatActivity {
         uuid = getIntent().getStringExtra("uuid");
 
 
-        token = GetFromSharedPreference.getDefaults("token", RegisterationActivity.this);
-        if (name.getText().toString().trim().length() > 0 && place_name.getText().toString().trim().length() > 0
-                && number2.getText().toString().trim().length() > 0 && number3.getText().toString().trim().length() > 0
-                && location.getText().toString().trim().length() > 0) {
-            registerUser();
 
-        }
         RelativeLayout top_layout = findViewById(R.id.top_layout);
 
         textView.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +91,13 @@ public class RegisterationActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegisterationActivity.this, VerifyNumberActivity.class);
-                startActivity(intent);
+                token = GetFromSharedPreference.getDefaults("token", RegisterationActivity.this);
+                if (name.getText().toString().trim().length() > 0 && place_name.getText().toString().trim().length() > 0
+                        && number2.getText().toString().trim().length() > 0 && number3.getText().toString().trim().length() > 0
+                        && location.getText().toString().trim().length() > 0) {
+                    registerUser();
+                }
+                else Log.d("-------><>>>>>>","Error");
             }
         });
         top_layout.setOnClickListener(new View.OnClickListener() {
@@ -228,10 +227,12 @@ public class RegisterationActivity extends AppCompatActivity {
                 param.put("placeName", place_name.getText().toString().trim());
                 param.put("phoneNumber1", number2.getText().toString().trim());
                 param.put("phoneNumber2", number3.getText().toString().trim());
-                param.put("locationName", location.getText().toString().trim());
-                param.put("location", location.getText().toString().trim());
-                param.put("uuid", token);
+                param.put("locationName", address);
+                param.put("location", sLng+","+sLat);
+                param.put("uuid", getIntent().getStringExtra("uuid"));
+                param.put("sensorId", getIntent().getStringExtra("sensorId"));
 
+                Log.d("------><>>>>><>",param.toString());
                 return param;
             }
         };
@@ -256,7 +257,7 @@ public class RegisterationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Log.d("Response", response);
+                        Log.d("sssssssss", response);
 
                         pDialog.dismiss();
                         String appData = null;
@@ -264,33 +265,38 @@ public class RegisterationActivity extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(response);
+                            JSONArray objArray = null;
                             success = obj.getBoolean("success");
-                            if (success) {
-                                JSONObject obj1 = obj.getJSONObject("sensor");
+                            if(success) {
+                                JSONObject payload = obj.getJSONObject("payload");
+
+                                JSONObject obj1 = payload.getJSONObject("sensor");
                                 realm.beginTransaction();
                                 UserModel userModel = gson.fromJson(obj1.toString(), UserModel.class);
                                 userModel.setUuid(uuid);
 
 
-                                RealmResults<UserModel> realmResults = realm.where(UserModel.class).findAll();
-                                if (realmResults != null)
-                                    for (int i = 0; i < realmResults.size(); i++) {
-                                        realmResults.get(i).setActive(false);
-                                        realm.copyToRealmOrUpdate(realmResults.get(i));
-                                    }
-                                userModel.setActive(true);
-                                Intent intent = new Intent(RegisterationActivity.this, Main2Activity.class);
-                                Defaults.msisdn = userModel.getMsisdn();
-                                Defaults.sensorId = userModel.getSensorId();
-                                Defaults.uuid = userModel.getUuid();
-                                startActivity(intent);
+                                    RealmResults<UserModel> realmResults = realm.where(UserModel.class).findAll();
+                                    if(realmResults!=null)
+                                        for(int i=0;i<realmResults.size();i++)
+                                        {
+                                            realmResults.get(i).setActive(false);
+                                            realm.copyToRealmOrUpdate(realmResults.get(i));
+                                        }
+                                    userModel.setActive(true);
+                                    Intent intent = new Intent(RegisterationActivity.this, Main2Activity.class);
+                                    Defaults.msisdn = userModel.getMsisdn();
+                                    Defaults.sensorId = userModel.getSensorId();
+                                    Defaults.uuid = userModel.getUuid();
+                                    startActivity(intent);
 
                                 realm.copyToRealmOrUpdate(userModel);
                                 realm.commitTransaction();
 
-                            } else {
+                            }
+                            else {
                                 JSONObject obj1 = obj.getJSONObject("error");
-                                Helper.showCustomAlert(RegisterationActivity.this, getString(R.string.something_goes_wrong));
+                                Helper.showCustomAlert(RegisterationActivity.this,getString(R.string.something_goes_wrong));
                             }
 
                         } catch (JSONException e) {
@@ -302,6 +308,7 @@ public class RegisterationActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // error
+                //  Toast.makeText(SplashScreenActivity.this, "Error occurs", Toast.LENGTH_SHORT).show();
                 Log.d("Error.Response", error.getMessage() + " message");
                 if (pDialog != null)
                     pDialog.dismiss();
@@ -312,8 +319,8 @@ public class RegisterationActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 HashMap<String, String> param = new HashMap<>();
-                param.put("uuid", getIntent().getStringExtra("uuid"));
-                param.put("sensorId", getIntent().getStringExtra("sensorId"));
+                param.put("uuid",uuid);
+                param.put("sensorId",getIntent().getStringExtra("sensorId"));
                 return param;
             }
         };
@@ -321,6 +328,7 @@ public class RegisterationActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }

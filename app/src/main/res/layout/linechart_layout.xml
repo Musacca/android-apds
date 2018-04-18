@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
@@ -22,150 +23,18 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"/>
             <TextView
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="19sp"
-                android:text="2 Feb 2018"
                 android:textColor="@color/white"
                 android:layout_centerInParent="true"/>
 
         </RelativeLayout>
-        <LinearLayout
+        <ListView
             android:layout_below="@+id/top_layout"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/graph_lyt"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical" >
-
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/graph"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"
-                        />
-                </LinearLayout>
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="Temperature"
-                    android:layout_below="@+id/graph_lyt"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_alignBottom="@+id/tem"
-                    android:layout_toRightOf="@+id/tem"
-                    android:layout_below="@+id/graph_lyt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Min: 36    Avg: 38    Max 40"/>
-                <View
-                    android:layout_below="@+id/tem"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/excellentConditionColor"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/graph_lyt1"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical" >
-
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/graph1"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"
-                        />
-                </LinearLayout>
-                <TextView
-                    android:layout_marginLeft="10dp"
-
-                    android:id="@+id/tem1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="Humidity"
-                    android:layout_below="@+id/graph_lyt1"
-                    android:layout_marginTop="1dp"/>
-                <TextView
-                    android:layout_alignBottom="@+id/tem1"
-
-                    android:layout_toRightOf="@+id/tem1"
-                    android:layout_below="@+id/graph_lyt1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:gravity="bottom"
-                    android:layout_marginLeft="10dp"
-                    android:text="Min: 11    Avg: 12    Max 14"/>
-                <View
-                    android:layout_below="@+id/tem1"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/excellentConditionColor"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <LinearLayout
-                    android:id="@+id/graph_lyt2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/graph2"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tem2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/graph_lyt2"
-                    android:layout_marginTop="12dp"
-                    android:text="CO2"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/graph_lyt2"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/tem2"
-                    android:text="Min: 0.1    Avg: 0.3    Max 0.7"
-                    android:textSize="15sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/tem2"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/excellentConditionColor" />
-            </RelativeLayout>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/list"/>
     </RelativeLayout>
-</ScrollView>
+</RelativeLayout>

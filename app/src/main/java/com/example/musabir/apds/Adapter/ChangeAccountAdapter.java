@@ -1,6 +1,7 @@
 package com.example.musabir.apds.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.musabir.apds.Activities.Main2Activity;
 import com.example.musabir.apds.Defaults.Defaults;
 import com.example.musabir.apds.Helper.TypeToNameConverter;
 import com.example.musabir.apds.Mapper.PushNotificationMapper;
@@ -23,6 +25,8 @@ import com.example.musabir.apds.R;
 
 import java.util.ArrayList;
 
+import io.realm.Realm;
+
 /**
  * Created by Musabir on 4/12/2018.
  */
@@ -30,10 +34,12 @@ import java.util.ArrayList;
 public class ChangeAccountAdapter extends BaseAdapter {
     Context context;
     static ArrayList<UserModel> userModels;
+    Realm realm;
 
     public ChangeAccountAdapter(Context context, ArrayList<UserModel> userModels) {
         this.context = context;
         this.userModels = userModels;
+        realm = Realm.getDefaultInstance();
     }
 
     public void addAll(ArrayList<UserModel> userModels) {
@@ -57,7 +63,7 @@ public class ChangeAccountAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         final LinearLayout contactsView;
         if (view == null) {
             contactsView = new LinearLayout(context);
@@ -73,16 +79,29 @@ public class ChangeAccountAdapter extends BaseAdapter {
         TextView profile_name = contactsView.findViewById(R.id.profile_name);
         TextView status_id = contactsView.findViewById(R.id.status_id);
         ImageView checked = contactsView.findViewById(R.id.checked);
+        if(userModels.get(i).getPlaceName()!=null)
+        profile_name.setText(userModels.get(i).getPlaceName()+"");
+        status_id.setText(Defaults.sensorId);
+        if(userModels.get(i).isActive())
+            checked.setVisibility(View.VISIBLE);
+        else checked.setVisibility(View.GONE);
         contactsView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                realm.beginTransaction();
                 for (int l = 0; l < userModels.size(); l++) {
-                    if (userModels.get(l).get()==true)
-                    userModels.sett(false);
+                    if (userModels.get(l).isActive()==true)
+                    userModels.get(l).setActive(false);
                 }
-                userModels.;//set login;
-
-                addAll(userModels);
+                userModels.get(i).setActive(true);//set login;
+                realm.copyToRealmOrUpdate(userModels);
+                realm.commitTransaction();
+                Intent intent = new Intent(context, Main2Activity.class);
+                Defaults.uuid = userModels.get(i).getUuid();
+                Defaults.sensorId = userModels.get(i).getSensorId();
+                Defaults.msisdn = userModels.get(i).getMsisdn();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(intent);
             }
         });
 

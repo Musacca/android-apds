@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 
 import com.example.musabir.apds.Activities.Main2Activity;
@@ -44,55 +46,48 @@ public class LogoutDialog extends Dialog {
             @Override
             public void onClick(View view) {
                 logout();
-                dismiss();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        realm.beginTransaction();
+                        Log.d("-------><>>>><>",realm.where(UserModel.class).findAll().size()+" size");
+                        UserModel s = realm.where(UserModel.class).findFirst();
+                        if (s == null) {
+                            Intent intent = new Intent(getContext(), SensorIDEnterActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            Defaults.uuid = null;
+                            Defaults.sensorId = null;
+                            Defaults.msisdn = null;
+                            getContext().startActivity(intent);
+                        } else {
+
+                            s.setActive(true);
+                            Defaults.uuid = s.getUuid();
+                            Defaults.sensorId = s.getSensorId();
+                            Defaults.msisdn = s.getMsisdn();
+                            Intent intent = new Intent(getContext(), Main2Activity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            getContext().startActivity(intent);
+                            realm.copyToRealmOrUpdate(s);
+                        }
+                        realm.commitTransaction();
+                    }
+            }, 300);
+
+            dismiss();
             }
         });
 
 
     }
 
-    private void logout(){
+    private void logout() {
         realm.beginTransaction();
-        UserModel userModels = realm.where(UserModel.class).equalTo("uuid", Defaults.uuid)
-                .equalTo("sensorId",Defaults.sensorId).findFirst();
-        userModels.deleteFromRealm();
+        Log.d("-------><>>>><>",realm.where(UserModel.class).findAll().size()+" size");
 
-        RealmResults<UserModel> s  = realm.where(UserModel.class).findAll();
-        if(s==null) {
-            Intent intent = new Intent(getContext(), SensorIDEnterActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Defaults.uuid=null;
-            Defaults.sensorId = null;
-            Defaults.msisdn = null;
-            getContext().startActivity(intent);
-        }
-        else {
-            for(int i=0;i<s.size();i++){
-                if(s.get(i).getName()!=null){
-                    s.get(i).setActive(true);
-                    Defaults.uuid=s.get(i).getUuid();
-                    Defaults.sensorId = s.get(i).getSensorId();
-                    Defaults.msisdn = s.get(i).getMsisdn();
-                    Intent intent = new Intent(getContext(), Main2Activity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    getContext().startActivity(intent);
-                    realm.copyToRealmOrUpdate(s.get(i));
-                    break;
-                }
-                else if (i==s.size()-1){
-                    Intent intent = new Intent(getContext(), RegisterationActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("uuid",s.get(i).getUuid());
-                    intent.putExtra("msisdn",s.get(i).getMsisdn());
-                    intent.putExtra("sensorId",s.get(i).getSensorId());
-                    intent.putExtra("coming",1);
-                    Defaults.uuid=null;
-                    Defaults.sensorId = null;
-                    Defaults.msisdn = null;
-                    getContext().startActivity(intent);
-                }
-            }
-        }
+        UserModel userModels = realm.where(UserModel.class).equalTo("uuid", Defaults.uuid)
+                .equalTo("sensorId", Defaults.sensorId).findFirst();
+        userModels.deleteFromRealm();
         realm.commitTransaction();
+
     }
 }

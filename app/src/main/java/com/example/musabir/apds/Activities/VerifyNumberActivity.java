@@ -104,13 +104,11 @@ public class VerifyNumberActivity extends AppCompatActivity {
                             success = obj.getBoolean("success");
                             if(success) {
                                 JSONObject obj1 = obj.getJSONObject("payload");
-                                realm.beginTransaction();
                                 UserModel userModel = gson.fromJson(obj1.toString(), UserModel.class);
                                 userModel.setMsisdn(getIntent().getStringExtra("msisdn"));
                                 uuid = obj1.getString("uuid");
                                 userModel.setUuid(uuid);
-                                realm.copyToRealmOrUpdate(userModel);
-                                realm.commitTransaction();
+
                                 if(status==1)
                                     meCurrentSensor();
                                 else meGeneral();
@@ -144,6 +142,8 @@ public class VerifyNumberActivity extends AppCompatActivity {
                 param.put("otp",verification_code_edittext.getText().toString().trim());
                 if(status==1)
                     param.put("sensorId",getIntent().getStringExtra("sensorId"));
+
+                Log.d("-------><>>><><>>",param.toString());
                 return param;
             }
         };
@@ -168,7 +168,7 @@ public class VerifyNumberActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Log.d("Response", response);
+                        Log.d("sssssssss", response);
 
                         pDialog.dismiss();
                         String appData = null;
@@ -179,7 +179,9 @@ public class VerifyNumberActivity extends AppCompatActivity {
                             JSONArray objArray = null;
                             success = obj.getBoolean("success");
                             if(success) {
-                                JSONObject obj1 = obj.getJSONObject("sensor");
+                                JSONObject payload = obj.getJSONObject("payload");
+
+                                JSONObject obj1 = payload.getJSONObject("sensor");
                                 realm.beginTransaction();
                                 UserModel userModel = gson.fromJson(obj1.toString(), UserModel.class);
                                 userModel.setUuid(uuid);
@@ -189,6 +191,8 @@ public class VerifyNumberActivity extends AppCompatActivity {
                                     Intent intent = new Intent(VerifyNumberActivity.this, RegisterationActivity.class);
                                     intent.putExtra("uuid",uuid);
                                     intent.putExtra("msisdn",getIntent().getStringExtra("msisdn"));
+                                    intent.putExtra("sensorId",getIntent().getStringExtra("sensorId"));
+
                                     startActivity(intent);
                                 }
                                 else {
@@ -272,7 +276,9 @@ public class VerifyNumberActivity extends AppCompatActivity {
                             success = obj.getBoolean("success");
                             if(success) {
                                 int count = 0;
-                                JSONArray obj1 = obj.getJSONArray("sensors");
+                                JSONObject payload = obj.getJSONObject("payload");
+
+                                JSONArray obj1 = payload.getJSONArray("sensors");
                                 realm.beginTransaction();
                                 if(obj1.length()>0)
                                 for (int i = 0; i < obj1.length(); i++) {
@@ -286,6 +292,7 @@ public class VerifyNumberActivity extends AppCompatActivity {
                                         Intent intent = new Intent(VerifyNumberActivity.this, RegisterationActivity.class);
                                         intent.putExtra("uuid", uuid);
                                         intent.putExtra("msisdn", userModel.getMsisdn());
+                                        intent.putExtra("sensorId",getIntent().getStringExtra("sensorId"));
                                         startActivity(intent);
                                     } else if (i == obj1.length() - 1) {
 
@@ -302,6 +309,7 @@ public class VerifyNumberActivity extends AppCompatActivity {
                                         Defaults.uuid = userModel.getUuid();
                                         startActivity(intent);
                                     }
+                                    if(userModel.getName()!=null)
                                     realm.copyToRealmOrUpdate(userModel);
                                     realm.commitTransaction();
 

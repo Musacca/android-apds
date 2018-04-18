@@ -15,8 +15,11 @@ public class URLHeaders {
     public static final String URL_LOGIN_VERIFY_SMS = URL_HEADER + "/user/login/verify/sms";
     public static final String URL_ME_GENERAL = URL_HEADER + "/user/me";
     public static final String URL_ME_CURRENT_SENSOR = URL_HEADER + "/user/me/currentSensor";
-    public static final String URL_CHANGE_STATUS = URL_HEADER + "/user/changeStatus";
+    public static final String URL_CHANGE_STATUS = URL_HEADER + "/user/me/changeStatus";
     public static final String URL_GET_LAST_DATA= URL_HEADER + "/user/getLastData";
+    public static final String URL_GET_LOGS= URL_HEADER + "/user/getLogs";
+    public static final String URL_FILTER= URL_HEADER + "/user/getFilter";
+    public static final String URL_UPDATE_NOTIFY= URL_HEADER + "/user/update/notify";
 
 
 }

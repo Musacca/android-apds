@@ -71,10 +71,12 @@
             android:layout_marginRight="10dp"
             android:id="@+id/list"
             android:layout_width="match_parent"
+            android:layout_above="@+id/lytt"
+            android:paddingBottom="5dp"
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:layout_below="@+id/list"
+            android:layout_alignParentBottom="true"
             android:id="@+id/lytt"
             android:orientation="horizontal"
             android:layout_width="match_parent"

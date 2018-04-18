@@ -22,11 +22,19 @@
                       </PersistentState>
                     </value>
                   </entry>
-                </map>
-              </option>
-              <option name="values">
-                <map>
-                  <entry key="outputIconType" value="ACTIONBAR" />
+                  <entry key="launcher">
+                    <value>
+                      <PersistentState>
+                        <option name="values">
+                          <map>
+                            <entry key="backgroundAssetType" value="COLOR" />
+                            <entry key="backgroundColor" value="c2c9d0" />
+                            <entry key="foregroundImage" value="C:\Users\Musabir\Downloads\AQA_Logo.png" />
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </PersistentState>

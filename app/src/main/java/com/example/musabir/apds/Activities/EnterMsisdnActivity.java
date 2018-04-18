@@ -101,8 +101,9 @@ public class EnterMsisdnActivity extends AppCompatActivity {
                                     Intent intent = new Intent(EnterMsisdnActivity.this, VerifyNumberActivity.class);
                                     if(status==1) {
                                         intent.putExtra("sensorId", sensorId);
-                                        intent.putExtra("msisdn",msisdn.getText().toString().trim());
                                     }
+                                        intent.putExtra("msisdn",msisdn.getText().toString().trim());
+
                                     intent.putExtra("status",status);//register
 
                                     startActivity(intent);

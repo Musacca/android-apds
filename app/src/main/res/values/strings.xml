@@ -34,5 +34,6 @@
     <string name="hydrogen">Hydrogen</string>
     <string name="smoke">Smoke</string>
     <string name="no_any_sensor_found">No any Sensor found</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 
 </resources>

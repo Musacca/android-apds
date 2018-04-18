@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/graph_lyt"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical" >
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_gravity="left"
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text=""
+        android:layout_below="@+id/graph_lyt"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/value"
+        android:layout_alignBottom="@+id/tem"
+        android:layout_toRightOf="@+id/tem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:text=""/>
+    <View
+        android:layout_below="@+id/tem"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/excellentConditionColor"/>
+
+</RelativeLayout>

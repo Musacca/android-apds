@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:paddingBottom="20dp"
+    android:paddingTop="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
@@ -18,6 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <LinearLayout
+
+        android:id="@+id/s"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/sensor_name"
         android:layout_width="match_parent"
@@ -48,11 +52,11 @@
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_toRightOf="@+id/min_txt"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="25dp"
             android:background="@drawable/custom_rectangle"
             android:textSize="18sp"
             android:gravity="center"
-            android:hint="123"
+            android:inputType="numberDecimal"
             android:textColorHint="@color/excellentConditionColor"
             android:textColor="@color/excellentConditionColor"
             android:layout_alignBottom="@+id/min_txt"/>
@@ -85,15 +89,22 @@
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_toRightOf="@+id/max_txt"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="25dp"
             android:background="@drawable/custom_rectangle"
             android:textSize="18sp"
             android:gravity="center"
-            android:hint="123"
+            android:inputType="numberDecimal"
+
             android:textColorHint="@color/excellentConditionColor"
             android:textColor="@color/excellentConditionColor"
             android:layout_alignBottom="@+id/max_txt"/>
         </RelativeLayout>
     </RelativeLayout>
     </LinearLayout>
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/s"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
 </RelativeLayout>

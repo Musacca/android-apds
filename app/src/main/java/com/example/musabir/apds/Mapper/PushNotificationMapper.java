@@ -69,5 +69,19 @@ public class PushNotificationMapper {
     public void setNotifyStatus(int notifyStatus) {
         this.notifyStatus = notifyStatus;
     }
+
+
+    @Override
+    public String toString() {
+        return "PushNotificationMapper{" +
+                "type=" + type +
+                ", minValueForCall=" + minValueForCall +
+                ", maxValueForCall=" + maxValueForCall +
+                ", minValueForNotify=" + minValueForNotify +
+                ", maxValueForNotify=" + maxValueForNotify +
+                ", callStatus=" + callStatus +
+                ", notifyStatus=" + notifyStatus +
+                '}';
+    }
 }
 

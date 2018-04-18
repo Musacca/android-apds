@@ -1,47 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.musabir.apds">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MyApplication"
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Main2Activity" />
+        <activity android:name=".Activities.Main2Activity"></activity>
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main2" />
-        <activity android:name=".Activities.EnterMsisdnActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Activities.RegisterationActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Activities.ForgetPasswordActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Activities.VerifyNumberActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Activities.SensorIDEnterActivity"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".Activities.EnterMsisdnActivity"
+            />
+        <activity
+            android:name=".Activities.RegisterationActivity"
+           />
+        <activity
+            android:name=".Activities.ForgetPasswordActivity"
+           />
+        <activity
+            android:name=".Activities.VerifyNumberActivity"
+          />
+        <activity
+            android:name=".Activities.SensorIDEnterActivity"/>
         <activity
             android:name=".Activities.EditProfile"
             android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
-
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_place_api" />
@@ -54,9 +52,18 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
-
-
         </receiver>
+
+        <activity
+            android:name=".Activities.SplashScreen"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
     </application>
 
 </manifest>

@@ -26,12 +26,17 @@ import com.example.musabir.apds.Defaults.APIResponseCodes;
 import com.example.musabir.apds.Defaults.Defaults;
 import com.example.musabir.apds.Defaults.URLHeaders;
 import com.example.musabir.apds.Helper.Helper;
+import com.example.musabir.apds.Helper.TypeToNameConverter;
+import com.example.musabir.apds.Mapper.LastLogMapper;
+import com.example.musabir.apds.Mapper.UserModel;
 import com.example.musabir.apds.R;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,6 +51,7 @@ public class FirstScreenFragment extends PreferenceFragment{
     View view;
     TextView co,co2,hidro,methane,smoke,lpg,temp,humidity;
     private Realm realm;
+    private Gson gson;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -59,6 +65,7 @@ public class FirstScreenFragment extends PreferenceFragment{
 
             }
         });
+        gson = new Gson();
         realm = Realm.getDefaultInstance();
         methane = view.findViewById(R.id.methane_value);
         lpg = view.findViewById(R.id.lpg_value);
@@ -79,7 +86,7 @@ public class FirstScreenFragment extends PreferenceFragment{
             FragmentManager fragmentManager = getFragmentManager();
             Bundle bundle = new Bundle();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.addToBackStack(fragmentTags);
+            //fragmentTransaction.addToBackStack(fragmentTags);
             fragmentTransaction.replace(R.id.content_frame, fragment, fragmentTags);
 
             fragment.setArguments(bundle);
@@ -119,6 +126,17 @@ public class FirstScreenFragment extends PreferenceFragment{
                                 JSONObject payload = obj.getJSONObject("payload");
                                 if (payload.getInt("code") == APIResponseCodes.OK) {
 
+                                    JSONArray lastLogs = payload.getJSONArray("lastLog");
+                                    ArrayList<LastLogMapper> lastLogMappers = new ArrayList<>();
+                                    for (int i=0;i<lastLogs.length();i++) {
+
+                                        LastLogMapper lastLogMapper = gson.fromJson(lastLogs.get(i).toString(), LastLogMapper.class);
+
+                                        lastLogMapper.setLogTypeName(TypeToNameConverter.typeToNameConvert(lastLogMapper.getLogType()));
+                                        lastLogMappers.add(lastLogMapper);
+                                    }
+
+                                    setData(lastLogMappers);
 
                                 } else
                                     Helper.showCustomAlert(getActivity(), getString(R.string.something_goes_wrong));
@@ -153,6 +171,39 @@ public class FirstScreenFragment extends PreferenceFragment{
         queue.add(postRequest);
 
 
+
+    }
+
+    private void setData(ArrayList<LastLogMapper> lastLogMappers){
+        for(int i=0;i<lastLogMappers.size();i++) {
+            switch (lastLogMappers.get(i).getLogType()) {
+                case 1:
+                    temp.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+                case 2:
+                    humidity.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;                case 3:
+                    methane.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+                case 4:
+                    co.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+                case 5:
+                    co2.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+                case 6:
+                    smoke.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+                case 7:
+                    lpg.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+                case 8:
+                    hidro.setText(lastLogMappers.get(i).getLogValue()+"");
+                    break;
+
+            }
+
+        }
 
     }
 

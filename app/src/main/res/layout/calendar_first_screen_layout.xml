@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/temperature_txt"
                     android:layout_marginLeft="1dp"
-                    android:text="@string/temperature"
+                    android:text="Celcius"
                     android:textColor="@color/sensorTypeColor"
                     android:textSize="12sp" />
 
@@ -137,7 +137,6 @@
                         android:layout_alignBottom="@id/temp_min_txt"
                         android:id="@+id/temp_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/temp_min_txt"/>
@@ -159,7 +158,6 @@
                         android:layout_alignBottom="@id/temp_avg_txt"
                         android:id="@+id/temp_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/temp_avg_txt"/>
 
@@ -179,7 +177,6 @@
                         android:layout_alignBottom="@id/temp_max_txt"
                         android:id="@+id/temp_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/temp_max_txt"/>
 
@@ -263,7 +260,6 @@
                         android:layout_alignBottom="@id/hum_min_txt"
                         android:id="@+id/hum_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/hum_min_txt"/>
@@ -285,7 +281,6 @@
                         android:layout_alignBottom="@id/hum_avg_txt"
                         android:id="@+id/hum_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/hum_avg_txt"/>
 
@@ -305,7 +300,6 @@
                         android:layout_alignBottom="@id/hum_max_txt"
                         android:id="@+id/hum_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/hum_max_txt"/>
 
@@ -396,7 +390,6 @@
                         android:layout_alignBottom="@id/car_diox_min_txt"
                         android:id="@+id/car_diox_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/car_diox_min_txt"/>
@@ -418,7 +411,6 @@
                         android:layout_alignBottom="@id/car_diox_avg_txt"
                         android:id="@+id/car_diox_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/car_diox_avg_txt"/>
 
@@ -438,7 +430,6 @@
                         android:layout_alignBottom="@id/car_diox_max_txt"
                         android:id="@+id/car_diox_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/car_diox_max_txt"/>
 
@@ -494,7 +485,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/air_pressure_txt"
                     android:layout_marginLeft="1dp"
-                    android:text="@string/hpa"
+                    android:text="PPM"
                     android:textColor="@color/sensorTypeColor"
                     android:textSize="12sp" />
                 <RelativeLayout
@@ -520,7 +511,6 @@
                         android:layout_alignBottom="@id/hydrogen_min_txt"
                         android:id="@+id/hydrogen_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/hydrogen_min_txt"/>
@@ -542,7 +532,6 @@
                         android:layout_alignBottom="@id/hydrogen_avg_txt"
                         android:id="@+id/hydrogen_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/hydrogen_avg_txt"/>
 
@@ -562,7 +551,6 @@
                         android:layout_alignBottom="@id/hydrogen_max_txt"
                         android:id="@+id/hydrogen_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/hydrogen_max_txt"/>
 
@@ -653,7 +641,6 @@
                         android:layout_alignBottom="@id/car_mono_min_txt"
                         android:id="@+id/car_mono_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/car_mono_min_txt"/>
@@ -675,7 +662,6 @@
                         android:layout_alignBottom="@id/car_mono_avg_txt"
                         android:id="@+id/car_mono_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/car_mono_avg_txt"/>
 
@@ -695,7 +681,6 @@
                         android:layout_alignBottom="@id/car_mono_max_txt"
                         android:id="@+id/car_mono_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/car_mono_max_txt"/>
 
@@ -751,7 +736,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/smoke_txt"
                     android:layout_marginLeft="1dp"
-                    android:text="@string/ppb"
+                    android:text="@string/ppm"
                     android:textColor="@color/sensorTypeColor"
                     android:textSize="12sp" />
 
@@ -778,7 +763,6 @@
                         android:layout_alignBottom="@id/smoke_min_txt"
                         android:id="@+id/smoke_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/smoke_min_txt"/>
@@ -800,7 +784,6 @@
                         android:layout_alignBottom="@id/smoke_avg_txt"
                         android:id="@+id/smoke_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/smoke_avg_txt"/>
 
@@ -820,7 +803,6 @@
                         android:layout_alignBottom="@id/smoke_max_txt"
                         android:id="@+id/smoke_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/smoke_max_txt"/>
 
@@ -913,7 +895,6 @@
                         android:layout_alignBottom="@id/methane_min_txt"
                         android:id="@+id/methane_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/methane_min_txt"/>
@@ -935,7 +916,6 @@
                         android:layout_alignBottom="@id/methane_avg_txt"
                         android:id="@+id/methane_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/methane_avg_txt"/>
 
@@ -955,7 +935,6 @@
                         android:layout_alignBottom="@id/methane_max_txt"
                         android:id="@+id/methane_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/methane_max_txt"/>
 
@@ -1011,7 +990,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lpg_txt"
                     android:layout_marginLeft="1dp"
-                    android:text="@string/ppb"
+                    android:text="@string/ppm"
                     android:textColor="@color/sensorTypeColor"
                     android:textSize="12sp" />
 
@@ -1038,7 +1017,6 @@
                         android:layout_alignBottom="@id/lpg_min_txt"
                         android:id="@+id/lpg_min_degree"
                         android:textColor="@color/excellentConditionColor"
-                        android:text="12"
                         android:textSize="14sp"
                         android:paddingRight="10dp"
                         android:layout_toRightOf="@id/lpg_min_txt"/>
@@ -1060,7 +1038,6 @@
                         android:layout_alignBottom="@id/lpg_avg_txt"
                         android:id="@+id/lpg_avg_degree"
                         android:textColor="@color/poorConditionColor"
-                        android:text="16"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/lpg_avg_txt"/>
 
@@ -1080,7 +1057,6 @@
                         android:layout_alignBottom="@id/lpg_max_txt"
                         android:id="@+id/lpg_max_degree"
                         android:textColor="@color/badConditionColor"
-                        android:text="20"
                         android:textSize="14sp"
                         android:layout_toRightOf="@id/lpg_max_txt"/>
 
